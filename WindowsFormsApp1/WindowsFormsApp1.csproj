@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00E71D51-064D-48F6-9AED-F09C9D80425C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WindowsFormsApp1</RootNamespace>
+    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GMap.NET.Core">
+      <HintPath>..\..\..\..\..\..\..\dev\VOD - Copy\GPS2\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms">
+      <HintPath>..\..\..\..\..\..\..\dev\VOD - Copy\GPS2\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="entertainmentSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="entertainmentSelection.Designer.cs">
+      <DependentUpon>entertainmentSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Player.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Player.Designer.cs">
+      <DependentUpon>Player.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VD.Designer.cs">
+      <DependentUpon>VD.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="entertainmentSelection.resx">
+      <DependentUpon>entertainmentSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Player.resx">
+      <DependentUpon>Player.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="en_local.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>en_local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fr_local.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>fr_local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VD.resx">
+      <DependentUpon>VD.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="en_local.Designer.cs">
+      <DependentUpon>en_local.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Include="fr_local.Designer.cs">
+      <DependentUpon>fr_local.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
+    <None Include="Resources\OceanLogo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OceanLogo1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TheOcean.csv" />
+    <None Include="Resources\VIA_Rail_Canada_Logo.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stationlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pin_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e1f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e2f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e3f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e4f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e5f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e6f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e7f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e8f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e9f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w1f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w2f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w3f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w4f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w5f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w6f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w7f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w8f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\w9f.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gb.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
