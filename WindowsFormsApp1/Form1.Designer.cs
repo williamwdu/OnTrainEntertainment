@@ -130,7 +130,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(34)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1040, 9);
+            this.label2.Location = new System.Drawing.Point(1030, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 6;
@@ -141,7 +141,7 @@
             this.Nextstation.AutoSize = true;
             this.Nextstation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(34)))));
             this.Nextstation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Nextstation.Location = new System.Drawing.Point(1178, 9);
+            this.Nextstation.Location = new System.Drawing.Point(1168, 9);
             this.Nextstation.Name = "Nextstation";
             this.Nextstation.Size = new System.Drawing.Size(0, 20);
             this.Nextstation.TabIndex = 7;
@@ -151,7 +151,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(34)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1040, 49);
+            this.label3.Location = new System.Drawing.Point(1030, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 8;
@@ -162,7 +162,7 @@
             this.LocalTimecell.AutoSize = true;
             this.LocalTimecell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(34)))));
             this.LocalTimecell.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocalTimecell.Location = new System.Drawing.Point(1178, 49);
+            this.LocalTimecell.Location = new System.Drawing.Point(1168, 49);
             this.LocalTimecell.Name = "LocalTimecell";
             this.LocalTimecell.Size = new System.Drawing.Size(0, 20);
             this.LocalTimecell.TabIndex = 9;

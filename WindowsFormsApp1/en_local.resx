@@ -123,6 +123,9 @@
   <data name="back" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="cat" xml:space="preserve">
+    <value>Category</value>
+  </data>
   <data name="cityguide" xml:space="preserve">
     <value>Guide</value>
   </data>
@@ -144,8 +147,14 @@
   <data name="nogps" xml:space="preserve">
     <value>NO GPS CONNECTION</value>
   </data>
+  <data name="play" xml:space="preserve">
+    <value>Play</value>
+  </data>
   <data name="playbutton" xml:space="preserve">
     <value>Start/Pause</value>
+  </data>
+  <data name="pubdate" xml:space="preserve">
+    <value>Publish Date</value>
   </data>
   <data name="speed" xml:space="preserve">
     <value>Speed</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="time" xml:space="preserve">
     <value>Local Time</value>
+  </data>
+  <data name="trailer" xml:space="preserve">
+    <value>Trailer</value>
   </data>
   <data name="tvshow" xml:space="preserve">
     <value>TV Shows</value>

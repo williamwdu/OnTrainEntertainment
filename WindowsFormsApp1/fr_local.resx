@@ -123,6 +123,9 @@
   <data name="back" xml:space="preserve">
     <value>Arrière</value>
   </data>
+  <data name="cat" xml:space="preserve">
+    <value>Classement</value>
+  </data>
   <data name="cityguide" xml:space="preserve">
     <value>Guider</value>
   </data>
@@ -144,8 +147,14 @@
   <data name="nogps" xml:space="preserve">
     <value>PAS DE CONNEXION GPS</value>
   </data>
+  <data name="play" xml:space="preserve">
+    <value>Interpréter</value>
+  </data>
   <data name="playbutton" xml:space="preserve">
     <value>Démarrer/Pause</value>
+  </data>
+  <data name="pubdate" xml:space="preserve">
+    <value>Arrivera en salle</value>
   </data>
   <data name="speed" xml:space="preserve">
     <value>La vitesse</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="time" xml:space="preserve">
     <value>Heure locale</value>
+  </data>
+  <data name="trailer" xml:space="preserve">
+    <value>Bande annonce</value>
   </data>
   <data name="tvshow" xml:space="preserve">
     <value>émission de télévision</value>

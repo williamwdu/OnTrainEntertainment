@@ -79,6 +79,15 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        internal static string cat {
+            get {
+                return ResourceManager.GetString("cat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Guide.
         /// </summary>
         internal static string cityguide {
@@ -142,11 +151,29 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Play.
+        /// </summary>
+        internal static string play {
+            get {
+                return ResourceManager.GetString("play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start/Pause.
         /// </summary>
         internal static string playbutton {
             get {
                 return ResourceManager.GetString("playbutton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publish Date.
+        /// </summary>
+        internal static string pubdate {
+            get {
+                return ResourceManager.GetString("pubdate", resourceCulture);
             }
         }
         
@@ -174,6 +201,15 @@ namespace WindowsFormsApp1 {
         internal static string time {
             get {
                 return ResourceManager.GetString("time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trailer.
+        /// </summary>
+        internal static string trailer {
+            get {
+                return ResourceManager.GetString("trailer", resourceCulture);
             }
         }
         

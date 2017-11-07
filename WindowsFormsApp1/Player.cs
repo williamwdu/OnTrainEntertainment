@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         private int y = 1;
         private string videoPaths;
         private Size formSize;
-        private int globalcounter,cusorcount = 0;
+        private int globalcounter,cusorcount = 1;
         public Player()
         {
             WindowState = FormWindowState.Maximized;
@@ -40,18 +40,12 @@ namespace WindowsFormsApp1
             Color _fore = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
             button1.Font = _normalFont;
             button2.Font = _normalFont;
-            button3.Font = _normalFont;
-            button4.Font = _normalFont;
             button1.BackColor = Color.Black;
             button2.BackColor = Color.Black;
-            button3.BackColor = Color.Black;
-            button4.BackColor = Color.Black;
             button2.Text = Form1.rm.GetString("playbutton");
             button1.Text = Form1.rm.GetString("stopbutton");
             button1.ForeColor = _fore;
             button2.ForeColor = _fore;
-            button3.ForeColor = _fore;
-            button4.ForeColor = _fore;
             //button1.FlatAppearance.BorderColor = _back;
             button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             formSize = new Size(this.Width, this.Height);
@@ -66,9 +60,7 @@ namespace WindowsFormsApp1
             trackBar1.Location = new Point(this.Size.Width / 10, this.Size.Height / 10*9);
             label3.Location = new Point(this.Size.Width / 10, this.Size.Height / 10 * 9 +30);
             button2.Location = new Point(this.Size.Width / 10, this.Size.Height / 10 * 9 +45); //first button
-            button1.Location = new Point(this.Size.Width / 10 +80, this.Size.Height / 10 * 9 +45);
-            button3.Location = new Point(this.Size.Width / 10 +160, this.Size.Height / 10 * 9 +45);
-            button4.Location = new Point(this.Size.Width / 10 +240, this.Size.Height / 10 * 9 +45);
+            button1.Location = new Point(this.Size.Width / 10 +200, this.Size.Height / 10 * 9 +45);
         }
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
@@ -155,8 +147,15 @@ namespace WindowsFormsApp1
                 button2.Visible = true;
                 x = e.fX;
                 y = e.fY;
-                cusorcount++;
-                Cursor.Show();
+                if (cusorcount < 1)
+                {
+                    cusorcount++;
+                    Cursor.Show();
+                }
+                else
+                {
+
+                }
             }
         }
         private void wakeup1(object sender, _WMPOCXEvents_MouseDownEvent e)
@@ -169,8 +168,6 @@ namespace WindowsFormsApp1
                 trackBar1.Visible = true;
                 button1.Visible = true;
                 button2.Visible = true;
-                button3.Visible = true;
-                button4.Visible = true;
                 cusorcount++;
                 Cursor.Show();
         }
@@ -194,12 +191,10 @@ namespace WindowsFormsApp1
                     trackBar1.Visible = false;
                     button1.Visible = false;
                     button2.Visible = false;
-                    button3.Visible = false;
-                    button4.Visible = false;
-                    for (int i = cusorcount; i >= 0; i--)
+                    if (cusorcount>0)
                     {
                         Cursor.Hide();
-                        cusorcount--;
+                        cusorcount=0;
                     }
                 }
             }

@@ -31,11 +31,11 @@ namespace WindowsFormsApp1
             Rectangle resolution = Screen.PrimaryScreen.Bounds;
             Size formSize = new Size(ClientRectangle.Width, resolution.Height);
             bannerleft.Size = new Size(this.Width / 5, ClientRectangle.Height);
-            label1.Location = new Point((this.Width / 12), ClientRectangle.Height / 14 * 1);
-            label2.Location = new Point((this.Width / 12), ClientRectangle.Height / 14 * 2);
-            label3.Location = new Point((this.Width / 12), ClientRectangle.Height / 14 * 3);
-            label4.Location = new Point((this.Width / 12), ClientRectangle.Height / 14 * 4);
-            label5.Location = new Point(this.Width / 12, ClientRectangle.Height / 14 * 13);
+            label1.Location = new Point(20, ClientRectangle.Height / 14 * 1);
+            label2.Location = new Point(20, ClientRectangle.Height / 14 * 2);
+            label3.Location = new Point(20, ClientRectangle.Height / 14 * 3);
+            label4.Location = new Point(20, ClientRectangle.Height / 14 * 4);
+            label5.Location = new Point(20, ClientRectangle.Height / 14 * 13);
             label1.Text = Form1.rm.GetString("movie");
             label2.Text = Form1.rm.GetString("eone");
             label3.Text = Form1.rm.GetString("tvshow");
@@ -173,6 +173,9 @@ namespace WindowsFormsApp1
                 Label caption = new Label();
                 caption.Text = tmp1.name;
                 caption.Location = new System.Drawing.Point((ClientRectangle.Width / 5) +  (ClientRectangle.Width*2* counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                caption.AutoSize = true;
+                Font _normalFont = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                caption.Font = _normalFont;
                 PictureBox pictureBox1 = new PictureBox();
                 pictureBox1.Location = new System.Drawing.Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp +20)));
                 pictureBox1.Name = tmp1.name;
@@ -187,6 +190,7 @@ namespace WindowsFormsApp1
                 pictureBox1.MouseClick += new MouseEventHandler(v_Click_d);
                 this.Controls.Add(pictureBox1);
                 this.Controls.Add(caption);
+                caption.BringToFront();
                 active.Add(pictureBox1);
                 activelabel.Add(caption);
                 counter++;
