@@ -141,8 +141,8 @@ namespace WindowsFormsApp1
 
                 }
 
-                mySerialPort = new SerialPort(str);//We should use only the port 8 of the device the usb will plugged in
-                mySerialPort.BaudRate = 4800;//time delay
+                mySerialPort = new SerialPort(str);
+                mySerialPort.BaudRate = 4800;
                 mySerialPort.Parity = Parity.None;
                 mySerialPort.StopBits = StopBits.One;
                 mySerialPort.DataBits = 8;
