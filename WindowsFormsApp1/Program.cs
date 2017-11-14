@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
         public static int blink = 0;
         public static int counter = 0;
         public static List<Station> stationlist = new List<Station>();
-        public static string Latitude, Altitude, Longitude, RealTime, link,lastCity,NerCity, nextstation, direction, status, locatime,Speed;
+        public static string Latitude, Altitude, Longitude, RealTime, link,lastCity,NerCity, nextstation, direction, status, locatime,Speed,debug;
         public static int timestamp;
         public static Boolean stop;
         //end of global variable 
@@ -249,6 +249,7 @@ namespace WindowsFormsApp1
                     for (int j = 0; j < strArr.Length; j++)
                     {
                         string strTemp = strArr[j];
+                        debug = strTemp;
                         string[] lineArr = strTemp.Split(',');
                         if (lineArr[0] == "GPGGA")
                         {
@@ -274,6 +275,14 @@ namespace WindowsFormsApp1
                                         Altitude = lineArr[9].ToString();
                                     }
                                     Convertion();
+                                    //debug message
+                                    using (TextWriter tw = new StreamWriter(@"C:\Users\VIA RAIL\Desktop\log.txt", true))
+                                    {
+
+                                        string line = "localtime:" + locatime + "; time: " + timestamp + "; latitude:" + Latitude + "; Longitude:" + Longitude + "; gps:" + debug;
+                                        tw.WriteLine(line);
+                                    }
+                                    //REMOVE AFTER DEV
                                     /*
                                     double calculus = Convert.ToDouble(timeMinAndSec) - heure;
                                     if (calculus < 0)
@@ -670,6 +679,8 @@ namespace WindowsFormsApp1
                     sw.WriteLine(link);
                     sw.WriteLine(Program.Altitude);
                 }
+
+
 
                 //prod
                 using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\VIA RAIL\Desktop\station.txt"))

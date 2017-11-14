@@ -39,14 +39,21 @@ namespace WindowsFormsApp1
             label1.Text = Form1.rm.GetString("movie");
             label2.Text = Form1.rm.GetString("eone");
             label3.Text = Form1.rm.GetString("tvshow");
-            label4.Text = Form1.rm.GetString("cityguide");
+            label4.Text = Form1.rm.GetString("station");
             label5.Text = Form1.rm.GetString("back");
         }
 
+        private void c_Click(object sender, EventArgs e)
+        {
+            string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\station\" + Form1.rm.GetString("lan") + "\\";
+            PictureBox movieselected = (PictureBox)sender;
+            folderPath = folderPath + movieselected.Name + ".xml";
+            SD m = new SD(folderPath);
+            m.Show();
+        }
         private void v_Click(object sender, EventArgs e)
         {
             string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\";
-            //string folderPath = @"C:\Users\Inno3\Desktop\Videos\";
             PictureBox movieselected = (PictureBox)sender;
             folderPath = folderPath + movieselected.Name + ".mp4";
             Player m = new Player(folderPath);
@@ -55,7 +62,6 @@ namespace WindowsFormsApp1
         private void v_Click_d(object sender, EventArgs e)
         {
             string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\seville\"+Form1.rm.GetString("lan")+"\\";
-            //string folderPath = @"C:\Users\Inno3\Desktop\Videos\seville\en\";
             PictureBox movieselected = (PictureBox)sender;
             folderPath = folderPath + movieselected.Name.Replace(" ","_") + ".xml";
             VD m = new VD(folderPath);
@@ -172,15 +178,15 @@ namespace WindowsFormsApp1
                 Bitmap bitmap;
                 Label caption = new Label();
                 caption.Text = tmp1.name;
-                caption.Location = new System.Drawing.Point((ClientRectangle.Width / 5) +  (ClientRectangle.Width*2* counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                caption.Location = new Point((ClientRectangle.Width / 5) +  (ClientRectangle.Width*2* counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
                 caption.AutoSize = true;
                 Font _normalFont = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
                 caption.Font = _normalFont;
                 PictureBox pictureBox1 = new PictureBox();
-                pictureBox1.Location = new System.Drawing.Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp +20)));
+                pictureBox1.Location = new Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp +20)));
                 pictureBox1.Name = tmp1.name;
-                pictureBox1.Size = new System.Drawing.Size((ClientRectangle.Width/5*2)-20, (Int32)tmppp);
-                using (Stream bmpStream = System.IO.File.Open(tmp1.image, System.IO.FileMode.Open))
+                pictureBox1.Size = new Size((ClientRectangle.Width/5*2)-20, (Int32)tmppp);
+                using (Stream bmpStream = File.Open(tmp1.image, FileMode.Open))
                 {
                     Image image = Image.FromStream(bmpStream);
                     bitmap = new Bitmap(image);
@@ -199,22 +205,84 @@ namespace WindowsFormsApp1
 
         private void label3_Click(object sender, EventArgs e)
         {
+            //no finished function
             PictureBox pictureBox1 = new PictureBox();
-            pictureBox1.Location = new System.Drawing.Point(79, 40);
+            pictureBox1.Location = new Point(79, 40);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(100, 50);
+            pictureBox1.Size = new Size(100, 50);
             pictureBox1.BackColor = Color.Black;
             this.Controls.Add(pictureBox1);
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            PictureBox pictureBox1 = new PictureBox();
-            pictureBox1.Location = new System.Drawing.Point(79, 40);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(100, 50);
-            pictureBox1.BackColor = Color.Black;
-            this.Controls.Add(pictureBox1);
+            scrollmax = 0;
+            scrollcounter = 0;
+            foreach (PictureBox tmp in active)
+            {
+                this.Controls.Remove(tmp);
+                tmp.Dispose();
+            }
+            foreach (Label tmp in activelabel)
+            {
+                this.Controls.Remove(tmp);
+                tmp.Dispose();
+            }
+            active.Clear();
+            activelabel.Clear();
+            movies.Clear();
+            Eonemovies.Clear();
+            string[] videoPaths;
+            string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\station\" + Form1.rm.GetString("lan") + "\\"; ;
+            //string folderPath = @"C:\Users\Inno3\Desktop\Videos\seville\en\";
+            videoPaths = Directory.GetFiles(folderPath, "*.xml");
+            if (videoPaths != null)
+            {
+                foreach (string path in videoPaths)
+                {
+                    string vid = path.Replace(folderPath, string.Empty);
+                    vid = vid.Replace(".xml", string.Empty);
+                    Movie tmp = new Movie() { name = vid.Replace("_", " "), des = path, tralier = path, directory = path, image = path.Replace(".xml", string.Empty) + ".jpg" };
+                    Eonemovies.Add(tmp);
+                }
+            }
+            int counter = 0;
+            int row = 0;
+            foreach (Movie tmp1 in Eonemovies)
+            {
+                double tmppp = ((ClientRectangle.Width / 5 * 2) - 20) * 470 / 1024;
+                if (counter > 1)
+                {
+                    counter = 0;
+                    scrollmax += (Int32)(tmppp + 20) / 20;
+                    row++;
+                }
+                Bitmap bitmap;
+                Label caption = new Label();
+                caption.Text = tmp1.name;
+                caption.Location = new Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                caption.AutoSize = true;
+                Font _normalFont = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                caption.Font = _normalFont;
+                PictureBox pictureBox1 = new PictureBox();
+                pictureBox1.Location = new Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                pictureBox1.Name = tmp1.name;
+                pictureBox1.Size = new Size((ClientRectangle.Width / 5 * 2) - 20, (Int32)tmppp);
+                using (Stream bmpStream = File.Open(tmp1.image, FileMode.Open))
+                {
+                    Image image = Image.FromStream(bmpStream);
+                    bitmap = new Bitmap(image);
+                }
+                pictureBox1.Image = bitmap;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox1.MouseClick += new MouseEventHandler(c_Click);
+                this.Controls.Add(pictureBox1);
+                this.Controls.Add(caption);
+                caption.BringToFront();
+                active.Add(pictureBox1);
+                activelabel.Add(caption);
+                counter++;
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)

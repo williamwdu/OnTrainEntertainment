@@ -129,11 +129,17 @@
   <data name="cityguide" xml:space="preserve">
     <value>Guider</value>
   </data>
+  <data name="contact" xml:space="preserve">
+    <value>Numéro de téléphone</value>
+  </data>
   <data name="enterbutton" xml:space="preserve">
     <value>Divertissement</value>
   </data>
   <data name="eone" xml:space="preserve">
     <value>Les Films Séville</value>
+  </data>
+  <data name="hour" xml:space="preserve">
+    <value>Heures d'ouverture</value>
   </data>
   <data name="lan" xml:space="preserve">
     <value>fr</value>
@@ -142,10 +148,13 @@
     <value>Films</value>
   </data>
   <data name="nextstop" xml:space="preserve">
-    <value>Prochaine station</value>
+    <value>Prochaine Gare</value>
   </data>
   <data name="nogps" xml:space="preserve">
     <value>PAS DE CONNEXION GPS</value>
+  </data>
+  <data name="parking" xml:space="preserve">
+    <value>Stationnement</value>
   </data>
   <data name="play" xml:space="preserve">
     <value>Interpréter</value>
@@ -159,6 +168,9 @@
   <data name="speed" xml:space="preserve">
     <value>La vitesse</value>
   </data>
+  <data name="station" xml:space="preserve">
+    <value>Liste des gares</value>
+  </data>
   <data name="stopbutton" xml:space="preserve">
     <value>Arrêt</value>
   </data>
@@ -167,6 +179,9 @@
   </data>
   <data name="trailer" xml:space="preserve">
     <value>Bande annonce</value>
+  </data>
+  <data name="transportation" xml:space="preserve">
+    <value>Transports en commun</value>
   </data>
   <data name="tvshow" xml:space="preserve">
     <value>émission de télévision</value>

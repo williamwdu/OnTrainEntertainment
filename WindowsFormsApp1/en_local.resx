@@ -129,11 +129,17 @@
   <data name="cityguide" xml:space="preserve">
     <value>Guide</value>
   </data>
+  <data name="contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
   <data name="enterbutton" xml:space="preserve">
     <value>Entertainment</value>
   </data>
   <data name="eone" xml:space="preserve">
     <value>eOne</value>
+  </data>
+  <data name="hour" xml:space="preserve">
+    <value>Opening Hours</value>
   </data>
   <data name="lan" xml:space="preserve">
     <value>en</value>
@@ -147,6 +153,9 @@
   <data name="nogps" xml:space="preserve">
     <value>NO GPS CONNECTION</value>
   </data>
+  <data name="parking" xml:space="preserve">
+    <value>Parking</value>
+  </data>
   <data name="play" xml:space="preserve">
     <value>Play</value>
   </data>
@@ -159,6 +168,9 @@
   <data name="speed" xml:space="preserve">
     <value>Speed</value>
   </data>
+  <data name="station" xml:space="preserve">
+    <value>List of stations</value>
+  </data>
   <data name="stopbutton" xml:space="preserve">
     <value>Stop</value>
   </data>
@@ -167,6 +179,9 @@
   </data>
   <data name="trailer" xml:space="preserve">
     <value>Trailer</value>
+  </data>
+  <data name="transportation" xml:space="preserve">
+    <value>Public transportation</value>
   </data>
   <data name="tvshow" xml:space="preserve">
     <value>TV Shows</value>

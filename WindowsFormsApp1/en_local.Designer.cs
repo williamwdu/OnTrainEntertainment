@@ -97,6 +97,15 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        internal static string contact {
+            get {
+                return ResourceManager.GetString("contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entertainment.
         /// </summary>
         internal static string enterbutton {
@@ -111,6 +120,15 @@ namespace WindowsFormsApp1 {
         internal static string eone {
             get {
                 return ResourceManager.GetString("eone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opening Hours.
+        /// </summary>
+        internal static string hour {
+            get {
+                return ResourceManager.GetString("hour", resourceCulture);
             }
         }
         
@@ -151,6 +169,15 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parking.
+        /// </summary>
+        internal static string parking {
+            get {
+                return ResourceManager.GetString("parking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Play.
         /// </summary>
         internal static string play {
@@ -187,6 +214,15 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of stations.
+        /// </summary>
+        internal static string station {
+            get {
+                return ResourceManager.GetString("station", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop.
         /// </summary>
         internal static string stopbutton {
@@ -210,6 +246,15 @@ namespace WindowsFormsApp1 {
         internal static string trailer {
             get {
                 return ResourceManager.GetString("trailer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public transportation.
+        /// </summary>
+        internal static string transportation {
+            get {
+                return ResourceManager.GetString("transportation", resourceCulture);
             }
         }
         
