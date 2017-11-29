@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gmap = new GMap.NET.WindowsForms.GMapControl();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.status = new System.Windows.Forms.Label();
@@ -84,16 +83,6 @@
             this.gmap.TabIndex = 0;
             this.gmap.Zoom = 2D;
             this.gmap.Load += new System.EventHandler(this.gMapControl1_Load);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(665, 168);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Travese Route";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -260,7 +249,7 @@
             // 
             this.lanchange.Location = new System.Drawing.Point(781, 70);
             this.lanchange.Name = "lanchange";
-            this.lanchange.Size = new System.Drawing.Size(120, 64);
+            this.lanchange.Size = new System.Drawing.Size(116, 40);
             this.lanchange.TabIndex = 19;
             this.lanchange.TabStop = false;
             this.lanchange.Click += new System.EventHandler(this.lanchange_Click_1);
@@ -271,7 +260,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1410, 665);
             this.Controls.Add(this.lanchange);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.Nextstation);
             this.Controls.Add(this.LocalTimecell);
@@ -307,7 +295,6 @@
         #endregion
 
         private GMap.NET.WindowsForms.GMapControl gmap;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox bannerTop;
         private System.Windows.Forms.ProgressBar progressBar1;

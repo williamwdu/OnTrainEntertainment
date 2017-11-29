@@ -141,6 +141,9 @@
   <data name="hour" xml:space="preserve">
     <value>Opening Hours</value>
   </data>
+  <data name="kids" xml:space="preserve">
+    <value>Kids</value>
+  </data>
   <data name="lan" xml:space="preserve">
     <value>en</value>
   </data>

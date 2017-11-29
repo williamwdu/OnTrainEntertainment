@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         List<PictureBox> active = new List<PictureBox>();
         List<Label> activelabel = new List<Label>();
         List<Movie> Eonemovies = new List<Movie>();
+        List<CBC> cbcs = new List<CBC>();
         int scrollcounter = 0;
         int scrollmax = 0;
         public entertainmentSelection()
@@ -35,12 +36,14 @@ namespace WindowsFormsApp1
             label2.Location = new Point(20, ClientRectangle.Height / 14 * 2);
             label3.Location = new Point(20, ClientRectangle.Height / 14 * 3);
             label4.Location = new Point(20, ClientRectangle.Height / 14 * 4);
+            label6.Location = new Point(20, ClientRectangle.Height / 14 * 5);
             label5.Location = new Point(20, ClientRectangle.Height / 14 * 13);
             label1.Text = Form1.rm.GetString("movie");
             label2.Text = Form1.rm.GetString("eone");
             label3.Text = Form1.rm.GetString("tvshow");
             label4.Text = Form1.rm.GetString("station");
             label5.Text = Form1.rm.GetString("back");
+            label6.Text = Form1.rm.GetString("kids");
         }
 
         private void c_Click(object sender, EventArgs e)
@@ -67,6 +70,13 @@ namespace WindowsFormsApp1
             VD m = new VD(folderPath);
             m.Show();
         }
+        private void v_Click_tv(object sender, EventArgs e)
+        {
+            PictureBox movieselected = (PictureBox)sender;
+            string folderPath = movieselected.Name;
+            TV m = new TV(folderPath);
+            m.Show();
+        }
         private void label1_Click(object sender, EventArgs e)
         {
             scrollmax = 0;
@@ -85,6 +95,7 @@ namespace WindowsFormsApp1
             activelabel.Clear();
             movies.Clear();
             Eonemovies.Clear();
+            cbcs.Clear();
             string[] videoPaths;
             string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\";
          //string folderPath = @"C:\Users\Inno3\Desktop\Videos\";
@@ -147,6 +158,7 @@ namespace WindowsFormsApp1
             activelabel.Clear();
             movies.Clear();
             Eonemovies.Clear();
+            cbcs.Clear();
             string[] videoPaths;
             string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\seville\"+Form1.rm.GetString("lan")+"\\";;
             //string folderPath = @"C:\Users\Inno3\Desktop\Videos\seville\en\";
@@ -205,13 +217,74 @@ namespace WindowsFormsApp1
 
         private void label3_Click(object sender, EventArgs e)
         {
-            //no finished function
-            PictureBox pictureBox1 = new PictureBox();
-            pictureBox1.Location = new Point(79, 40);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 50);
-            pictureBox1.BackColor = Color.Black;
-            this.Controls.Add(pictureBox1);
+            //fetch all the TV programme in the directory
+            scrollmax = 0;
+            scrollcounter = 0;
+            foreach (PictureBox tmp in active)
+            {
+                this.Controls.Remove(tmp);
+                tmp.Dispose();
+            }
+            foreach (Label tmp in activelabel)
+            {
+                this.Controls.Remove(tmp);
+                tmp.Dispose();
+            }
+            active.Clear();
+            activelabel.Clear();
+            movies.Clear();
+            Eonemovies.Clear();
+            cbcs.Clear();
+            string[] tvPaths;
+            string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\tv\" + Form1.rm.GetString("lan") + "\\"; ;
+            tvPaths = Directory.GetDirectories(folderPath);
+            if (tvPaths != null)
+            {
+                foreach (string path in tvPaths)
+                {
+                        string vid = path.Replace(folderPath, string.Empty);
+                        vid = vid.Replace(".mp4", string.Empty);
+                        CBC tmp = new CBC() { name = vid.Replace("_", " "), directory = path, image = path + "\\poster.jpg" };
+                        cbcs.Add(tmp);
+                }
+            }
+            int counter = 0;
+            int row = 0;
+            foreach (CBC tmp1 in cbcs)
+            {
+                double tmppp = ((ClientRectangle.Width / 5 * 2) - 20) * 470 / 1024;
+                if (counter > 1)
+                {
+                    counter = 0;
+                    scrollmax += (Int32)(tmppp + 20) / 20;
+                    row++;
+                }
+                Bitmap bitmap;
+                Label caption = new Label();
+                caption.Text = tmp1.name;
+                caption.Location = new Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                caption.AutoSize = true;
+                Font _normalFont = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                caption.Font = _normalFont;
+                PictureBox pictureBox1 = new PictureBox();
+                pictureBox1.Location = new Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                pictureBox1.Name = tmp1.directory;
+                pictureBox1.Size = new Size((ClientRectangle.Width / 5 * 2) - 20, (Int32)tmppp);
+                using (Stream bmpStream = File.Open(tmp1.image, FileMode.Open))
+                {
+                    Image image = Image.FromStream(bmpStream);
+                    bitmap = new Bitmap(image);
+                }
+                pictureBox1.Image = bitmap;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.MouseClick += new MouseEventHandler(v_Click_tv);
+                this.Controls.Add(pictureBox1);
+                this.Controls.Add(caption);
+                caption.BringToFront();
+                active.Add(pictureBox1);
+                activelabel.Add(caption);
+                counter++;
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -232,6 +305,7 @@ namespace WindowsFormsApp1
             activelabel.Clear();
             movies.Clear();
             Eonemovies.Clear();
+            cbcs.Clear();
             string[] videoPaths;
             string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\station\" + Form1.rm.GetString("lan") + "\\"; ;
             //string folderPath = @"C:\Users\Inno3\Desktop\Videos\seville\en\";
@@ -336,6 +410,78 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            //fetch all the TV programme in the directory
+            scrollmax = 0;
+            scrollcounter = 0;
+            foreach (PictureBox tmp in active)
+            {
+                this.Controls.Remove(tmp);
+                tmp.Dispose();
+            }
+            foreach (Label tmp in activelabel)
+            {
+                this.Controls.Remove(tmp);
+                tmp.Dispose();
+            }
+            active.Clear();
+            activelabel.Clear();
+            movies.Clear();
+            Eonemovies.Clear();
+            cbcs.Clear();
+            string[] tvPaths;
+            string folderPath = @"C:\Users\VIA RAIL\Desktop\Videos\kids\" + Form1.rm.GetString("lan") + "\\"; ;
+            tvPaths = Directory.GetDirectories(folderPath);
+            if (tvPaths != null)
+            {
+                foreach (string path in tvPaths)
+                {
+                        string vid = path.Replace(folderPath, string.Empty);
+                        vid = vid.Replace(".mp4", string.Empty);
+                        CBC tmp = new CBC() { name = vid.Replace("_", " "), directory = path, image = path + "\\poster.jpg" };
+                        cbcs.Add(tmp);
+                }
+            }
+            int counter = 0;
+            int row = 0;
+            foreach (CBC tmp1 in cbcs)
+            {
+                double tmppp = ((ClientRectangle.Width / 5 * 2) - 20) * 470 / 1024;
+                if (counter > 1)
+                {
+                    counter = 0;
+                    scrollmax += (Int32)(tmppp + 20) / 20;
+                    row++;
+                }
+                Bitmap bitmap;
+                Label caption = new Label();
+                caption.Text = tmp1.name;
+                caption.Location = new Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                caption.AutoSize = true;
+                Font _normalFont = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                caption.Font = _normalFont;
+                PictureBox pictureBox1 = new PictureBox();
+                pictureBox1.Location = new Point((ClientRectangle.Width / 5) + (ClientRectangle.Width * 2 * counter / 5) + 10, (ClientRectangle.Height / 14) + (row * ((Int32)tmppp + 20)));
+                pictureBox1.Name = tmp1.directory;
+                pictureBox1.Size = new Size((ClientRectangle.Width / 5 * 2) - 20, (Int32)tmppp);
+                using (Stream bmpStream = File.Open(tmp1.image, FileMode.Open))
+                {
+                    Image image = Image.FromStream(bmpStream);
+                    bitmap = new Bitmap(image);
+                }
+                pictureBox1.Image = bitmap;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox1.MouseClick += new MouseEventHandler(v_Click_tv);
+                this.Controls.Add(pictureBox1);
+                this.Controls.Add(caption);
+                caption.BringToFront();
+                active.Add(pictureBox1);
+                activelabel.Add(caption);
+                counter++;
+            }
+        }
     }
 
     public class Item
@@ -351,6 +497,13 @@ namespace WindowsFormsApp1
         public String directory { get; set; }
         public String des { get; set; }
         public String tralier { get; set; }
+        public String image { get; set; }
+    }
+
+    public class CBC
+    {
+        public String name { get; set; }
+        public String directory { get; set; }
         public String image { get; set; }
     }
 }

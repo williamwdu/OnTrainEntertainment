@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
                 {
                     if (usbDevice.Description != null)
                     {
-                        if (usbDevice.Description.Contains("Prolific"))
+                        if (usbDevice.Description.Contains("Prolific")) //Name of GPS Device!!!!!!!!!!
                         {
                             int i = usbDevice.Description.IndexOf("COM");
                             char[] arr = usbDevice.Description.ToCharArray();
@@ -256,17 +256,19 @@ namespace WindowsFormsApp1
                             try
                             {
                                 //Latitude
-                                if (lineArr.Length >= 6 && lineArr[2] != "")
+                                if (lineArr.Length >= 7 && lineArr[2] != "")
                                 {
-                                    Double dLat = Convert.ToDouble(lineArr[2]);
-                                    dLat = dLat / 100;
-                                    string[] lat = dLat.ToString().Split('.');
-                                    Latitude = lineArr[3].ToString() + lat[0].ToString() + "." + ((Convert.ToDouble(lat[1]) / 60)).ToString("#####");
+                                    double converted = Convert.ToDouble(lineArr[2]) / 100;
+                                    string[] lat = converted.ToString().Split('.');
+                                    string altered = lat[1] + "000000000000000000000000";
+                                    double me = Convert.ToDouble(lat[0].ToString()) + ((Convert.ToDouble(altered.Substring(0, 6)) / 60)) / 10000;
+                                    Latitude = lineArr[3].ToString() + me.ToString();
                                     //Longitude
-                                    Double dLon = Convert.ToDouble(lineArr[4]);
-                                    dLon = dLon / 100;
-                                    string[] lon = dLon.ToString().Split('.');
-                                    Longitude = lineArr[5].ToString() + lon[0].ToString() + "." + ((Convert.ToDouble(lon[1]) / 60)).ToString("#####");
+                                    double converted1 = Convert.ToDouble(lineArr[4]) / 100;
+                                    string[] lon = converted1.ToString().Split('.');
+                                    string altered1 = lon[1] + "000000000000000000000000";
+                                    double me1 = Convert.ToDouble(lon[0].ToString()) + ((Convert.ToDouble(altered1.Substring(0, 6)) / 60)) / 10000;
+                                    Longitude = lineArr[5].ToString() + me1.ToString();
                                     //Time
                                     string timeMinAndSec = lineArr[1][0].ToString() + lineArr[1][1].ToString();
                                     //Altitude
@@ -279,7 +281,7 @@ namespace WindowsFormsApp1
                                     using (TextWriter tw = new StreamWriter(@"C:\Users\VIA RAIL\Desktop\log.txt", true))
                                     {
 
-                                        string line = "localtime:" + locatime + "; time: " + timestamp + "; latitude:" + Latitude + "; Longitude:" + Longitude + "; gps:" + debug;
+                                        string line = "localtime:" + locatime + "; timestamp: " + timestamp + "; direction: " +direction + "; status: " + status + "; display: " + NerCity + "; latitude:" + Latitude + "; Longitude:" + Longitude + "; gps:" + debug;
                                         tw.WriteLine(line);
                                     }
                                     //REMOVE AFTER DEV
@@ -299,7 +301,7 @@ namespace WindowsFormsApp1
 
                             }
                         }
-                        else if ((lineArr[0] == "GPRMC"))
+                        if ((lineArr[0] == "GPRMC"))
                         {
                             //Console.WriteLine(lineArr[9]);
                             //Console.WriteLine(lineArr[1]);
@@ -330,7 +332,15 @@ namespace WindowsFormsApp1
                                         Speed = Convert.ToInt32(knots * 1.852).ToString();
                                     }
                                 }
+
+                                using (TextWriter tw = new StreamWriter(@"C:\Users\VIA RAIL\Desktop\log.txt", true))
+                                {
+
+                                    string line = "localtime:" + locatime + "; timestamp: " + timestamp + "; direction: " + direction + "; status: " + status + "; display: " + NerCity + "; latitude:" + Latitude + "; Longitude:" + Longitude + "; gps:" + debug;
+                                    tw.WriteLine(line);
+                                }
                             }
+
 
                         }
                     }
@@ -404,39 +414,51 @@ namespace WindowsFormsApp1
             return d;
         }
 
+        public static void Errorstate()
+        {
+
+            DialogResult dialogResult = MessageBox.Show("Something wrong with system file, is this train onroute to Halifax?", "ERROR", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //prod
+                using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\VIA RAIL\Desktop\station.txt"))
+                //dev
+                //using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\Inno3\Desktop\station.txt"))
+                {
+                    sw.WriteLine("St. LAMBERT");
+                    sw.WriteLine(0);
+                    sw.WriteLine(0);
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //prod
+                using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\VIA RAIL\Desktop\station.txt"))
+                //dev
+                //using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\Inno3\Desktop\station.txt"))
+                {
+                    sw.WriteLine("TRURO");
+                    sw.WriteLine(1);
+                    sw.WriteLine(0);
+                }
+            }
+        }
         public static void NearestCity()
         {
             //dev
             //string[] linesssss = File.ReadAllLines(@"C:\Users\Inno3\Desktop\station.txt");
             //prod
             string[] linesssss = File.ReadAllLines(@"C:\Users\VIA RAIL\Desktop\station.txt");
-            if (linesssss.Length<3|| linesssss[0] == "" || linesssss[1] == "" || linesssss[2] == "")
+            if (linesssss.Length < 3 || linesssss[0] == "" || linesssss[1] == "" || linesssss[2] == "")
             {
-                DialogResult dialogResult = MessageBox.Show("Something wrong with system file, is this train onroute to Halifax?", "ERROR", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    //prod
-                    using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\VIA RAIL\Desktop\station.txt"))
-                    //dev
-                    //using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\Inno3\Desktop\station.txt"))
-                    {
-                        sw.WriteLine("St. LAMBERT");
-                        sw.WriteLine(0);
-                        sw.WriteLine(0);
-                    }
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-                    //prod
-                    using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\VIA RAIL\Desktop\station.txt"))
-                    //dev
-                    //using (System.IO.StreamWriter sw = System.IO.File.CreateText(@"C:\Users\Inno3\Desktop\station.txt"))
-                    {
-                        sw.WriteLine("TRURO");
-                        sw.WriteLine(1);
-                        sw.WriteLine(0);
-                    }
-                }
+                Errorstate();
+            }
+            else
+            {
+                link = "blank";
+                nextstation = linesssss[0];
+                direction = linesssss[1];
+                timestamp = Convert.ToInt32(linesssss[2]);
             }
 
             if (Convert.ToDouble(Longitude) == 0 || Convert.ToDouble(Latitude) == 0 || Convert.ToDouble(Longitude) >= -61 || Convert.ToDouble(Latitude) <= 42 || Convert.ToDouble(Latitude) >= 60)
@@ -459,6 +481,17 @@ namespace WindowsFormsApp1
                 if (timestamp != 0)
                 {
                     timestamp--;
+                    if(direction == "1")
+                    {
+                        NerCity = "HALIFAX";
+                        link = "blank";
+
+                    }
+                    else
+                    {
+                        NerCity = "MONTREAL";
+                        link = "blank";
+                    }
                 }
                 else
                 {
@@ -504,10 +537,10 @@ namespace WindowsFormsApp1
                                             }
                                             NerCity = stations.middle.name;
                                             //label1.Invoke(t => t.Text = "Next Station: " + stations.middle.name);
-                                            nextstation = stations.middle.name;
+                                            nextstation = "St. LAMBERT";
                                             status = "Arriving at final stop";
                                             direction = "0";
-                                            timestamp = 5000;
+                                            timestamp = 500;
                                         }
                                         else
                                         {
@@ -556,12 +589,15 @@ namespace WindowsFormsApp1
                                     counter++;
                                     if (counter >= 20)
                                     {
-                                        stop = true;
+                                        stop = true; //train arrived at destination
                                         counter = 0;
                                     }
                                 }
                             }
-
+                            if (link=="blank")
+                            {
+                                //Errorstate();
+                            }
                         }
                     }
                     else
@@ -607,10 +643,10 @@ namespace WindowsFormsApp1
                                             }
                                             NerCity = stations.middle.name;
                                             //label1.Invoke(t => t.Text = "Next Station: " + stations.middle.name);
-                                            nextstation = stations.middle.name;
+                                            nextstation = "TRURO";
                                             status = "Arriving at final stop";
                                             direction = "1";
-                                            timestamp = 5000;
+                                            timestamp = 500;
                                         }
                                         else
                                         {

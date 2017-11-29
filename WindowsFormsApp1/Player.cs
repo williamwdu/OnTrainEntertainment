@@ -105,6 +105,7 @@ namespace WindowsFormsApp1
 
                 case 8:    // MediaEnded
                     state = "MediaEnded";
+                    Cursor.Show();
                     this.Close();
                     break;
 

@@ -133,6 +133,15 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kids.
+        /// </summary>
+        internal static string kids {
+            get {
+                return ResourceManager.GetString("kids", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to en.
         /// </summary>
         internal static string lan {

@@ -133,6 +133,15 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to enfants.
+        /// </summary>
+        internal static string kids {
+            get {
+                return ResourceManager.GetString("kids", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to fr.
         /// </summary>
         internal static string lan {
@@ -205,7 +214,7 @@ namespace WindowsFormsApp1 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La vitesse.
+        ///   Looks up a localized string similar to Vitesse.
         /// </summary>
         internal static string speed {
             get {

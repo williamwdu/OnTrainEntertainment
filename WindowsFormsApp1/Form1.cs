@@ -66,7 +66,7 @@ namespace WindowsFormsApp1
             Nextstation.Location = new System.Drawing.Point(Nextstation.Location.X, this.Height / 7 / 2 / 2);
             LocalTimecell.Location = new System.Drawing.Point(LocalTimecell.Location.X, this.Height / 7 / 2);
             bottonbanner.Location = new System.Drawing.Point(0, this.Height - bottonbanner.Size.Height);
-            statusimage.Location = new System.Drawing.Point((this.Width / 2) - (statusimage.Width / 2), this.Height - statusimage.Size.Height - 5);
+            statusimage.Location = new System.Drawing.Point((this.Width / 2) - (statusimage.Width / 2), this.Height - statusimage.Size.Height);
             logobottom.Location = new System.Drawing.Point(0, this.Height - 114);
             lanchange.Location = new System.Drawing.Point(0, this.Height - 114);
             //hide bottom logo for now
@@ -75,7 +75,6 @@ namespace WindowsFormsApp1
             upperlogo.Location = new System.Drawing.Point(0, 0); //12 is font size.
             pictureBox1.Location = new Point(label2.Location.X, 0);
             pictureBox1.Size = new Size(this.Width-pictureBox1.Location.X, this.Height / 7);
-            button1.Location = new Point(label2.Location.X - 100, 20);
             button2.Location = new Point(label2.Location.X - 100, 40);
             Program.GPSTrack();
 
@@ -187,8 +186,8 @@ namespace WindowsFormsApp1
             this.progressBar1.Value = e.ProgressPercentage;
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        //traverse function, no longer been used.
+        private void button1_Click(object sender, EventArgs e) 
         {
             System.IO.StreamReader file;
             //dev
@@ -203,6 +202,7 @@ namespace WindowsFormsApp1
                 gmap.Position = new GMap.NET.PointLatLng(Convert.ToDouble(values[1]), Convert.ToDouble(values[2]));
             }
         }
+        //end of traverse
 
         private void Form1_Load(object sender, EventArgs e)
         {

@@ -50,12 +50,6 @@ namespace WindowsFormsApp1
             des.Size = new Size(ClientRectangle.Width * 4 / 5 - 50, ClientRectangle.Height - 20 - ((ClientRectangle.Height / 48) + 45 + ((ClientRectangle.Width * 4 / 5 - 135) * 470 / 1024)));
             label2.Location = new Point(ClientRectangle.Width / 5 + 15, ClientRectangle.Height*22 / 24);
             label3.Location = new Point(ClientRectangle.Width / 5 + 15, 20 + ClientRectangle.Height*22 / 24);
-            button3.Location = new Point(ClientRectangle.Width / 5 + 15, ClientRectangle.Height * 23 / 24); //back button
-            button1.Location = new Point(ClientRectangle.Width *3/ 10 + 15, ClientRectangle.Height*23/ 24);
-            button2.Location = new Point(ClientRectangle.Width *4/ 10 + 15, ClientRectangle.Height*23 / 24);
-            button3.Text = Form1.rm.GetString("back");
-            button1.Text = Form1.rm.GetString("trailer");
-            button2.Text = Form1.rm.GetString("play");
             label4.Location = new Point(20, ClientRectangle.Height / 14 * 1);
             label4.Text = Form1.rm.GetString("trailer");
             label6.Location = new Point(20, ClientRectangle.Height / 14 * 2);
@@ -75,22 +69,17 @@ namespace WindowsFormsApp1
                         else if (xReader.Name == "link")
                         {
                             xReader.Read();
-                            button2.Tag = xReader.Value;
                             string processed = xReader.Value.Replace("\n", "");
-                            button2.Click += (sender1, EventArgs) => { v_Click(sender1, EventArgs, processed); };
                             label6.Click += (sender1, EventArgs) => { v_Click(sender1, EventArgs, processed); };
                             if (File.Exists(@"C:\Users\VIA RAIL\Desktop\Videos\seville\" + Form1.rm.GetString("lan") + "\\" + processed.Replace(".mp4", "_preview.mp4")))
                             {
-                                button1.Visible = true;
-                                button1.Tag = processed.Replace(".mp4", "_preview.mp4");
-                                button1.Click += (sender1, EventArgs) => { v_Click(sender1, EventArgs, processed.Replace(".mp4", "_preview.mp4")); };
+                               
                                 label4.Visible = true;
                                 label4.Click += (sender1, EventArgs) => { v_Click(sender1, EventArgs, processed.Replace(".mp4", "_preview.mp4")); };
 
                             }
                             else
                             {
-                                button1.Visible = false;
                                 label4.Visible = false;
                             }
                             using (Stream bmpStream = System.IO.File.Open(@"C:\Users\VIA RAIL\Desktop\Videos\seville\"+Form1.rm.GetString("lan")+"\\" + processed.Replace(".mp4", "_thumb.jpg"), System.IO.FileMode.Open))
@@ -138,8 +127,24 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
+        private void poster_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void des_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
